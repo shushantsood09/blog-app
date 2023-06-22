@@ -9,9 +9,9 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'category', component: SingleCategoryComponent },
+  { path: 'category/:category/:id', component: SingleCategoryComponent },
   { path: 'about', component: AboutUsComponent },
-  { path: 'post', component: SinglePostsComponent },
+  { path: 'post/:id', component: SinglePostsComponent },
   { path: 'terms-conditions', component: TermsAndConditionsComponent },
   { path: 'contact', component: ContactUsComponent },
 ];

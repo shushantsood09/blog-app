@@ -1,3 +1,9 @@
 .card{
   max-width: 450px;
+  min-height: 500px;
+  cursor: pointer;
+}
+
+.card-image-top{
+  height: 250px !important;
 }

@@ -1,24 +1,21 @@
-<div class="card shadow-effect">
+<div class="card shadow-effect" *ngIf="postData" [routerLink]="['/post', postData.id]">
   <img
-    src="https://images.pexels.com/photos/17033550/pexels-photo-17033550/free-photo-of-analog-iced-coffee.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+    src="{{ postData.data.postImgPath }}"
     alt="post-image"
     class="card-image-top"
   />
   <div class="card-body">
-    <small class="bg-light text-danger text-center">Design </small>
-    <small class="bg-light text-success text-center ml-3">Feature </small>
-    <small class="bg-light text-info text-center ml-3">Views - 254 </small>
+    <small class="bg-light text-danger text-center">{{ postData.data.category.category }} </small>
+    <small class="bg-light text-success text-center ml-3" *ngIf="postData.data?.isFeatured">Featured </small>
+    <small class="bg-light text-info text-center ml-3">Views - {{ postData.data.views}} </small>
 
-    <h5 class="mt-1">How to start a blog!</h5>
+    <h5 class="mt-1">{{ postData.data.title }} </h5>
     <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem,
-      in aliquam hic officiis nulla consequatur modi quam necessitatibus quae
-      tenetur sequi earum esse dolor perspiciatis soluta. Doloremque
-      exercitationem perferendis quidem iusto maxime ad. Qui!
+      {{ postData.data.excerpt}}
     </p>
 
     <small class="bg-light text-warning text-center ml-3"
-      >LAST UPDATED - Sep 20 2022
+      >LAST UPDATED - {{ postData.data.createdAt.toMillis() | date }}
     </small>
   </div>
 </div>

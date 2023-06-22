@@ -6,15 +6,49 @@
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum,
         officiis. Quisquam, obcaecati.
       </p>
-      <form action="" class="form-inline mb-5 mt-5">
+
+      <div class="alert alert-danger mt-3" *ngIf="isEmailError">
+        Email is alredy in use.
+      </div>
+
+      <div class="alert alert-info mt-3" *ngIf="isSubscribed">
+        Thank you for subscribing to our newsletter service. Stay tuned for awesome blog post...!
+      </div>
+      <form class="form-inline mb-5 mt-5" *ngIf="!isSubscribed" #subForm= ngForm (ngSubmit)="onSubmit(subForm.value)">
         <div class="form-group col-md-5">
-          <input type="text" class="form-control shadow-effect" placeholder="Your Name" />
+          <input
+            type="text"
+            class="form-control shadow-effect"
+            placeholder="Your Name"
+            #Name = 'ngModel'
+            name="name"
+            ngModel
+            [ngClass]="{'is-invalid': Name.touched && Name.invalid }"
+            required
+          />
+          <div class="text-danger" *ngIf="Name.touched && Name.invalid">
+            <div *ngIf="Name.errors?.required">Name is required</div>
+          </div>
         </div>
         <div class="form-group col-md-5">
-          <input type="email" class="form-control shadow-effect" placeholder="Your Email" />
+          <input
+            type="email"
+            class="form-control shadow-effect"
+            placeholder="Your Email"
+            #Email = 'ngModel'
+            name="email"
+            ngModel
+            [ngClass]="{'is-invalid': Email.touched && Email.invalid }"
+            email
+            required
+          />
+          <div class="text-danger" *ngIf="Email.touched && Email.invalid">
+            <div *ngIf="Email.errors?.required">Email is required</div>
+            <div *ngIf="Email.errors?.email">Please Enter a vail Email Address</div>
+          </div>
         </div>
         <div class="col-md-2">
-          <button class="btn btn-info btn-block btn-theme">SUBSCRIBE</button>
+          <button class="btn btn-info btn-block btn-theme" [disabled]="subForm.invalid">SUBSCRIBE</button>
         </div>
       </form>
     </div>
