@@ -1,6 +1,14 @@
 .featured-section{
-  padding-left: 130px;
-  padding-right: 130px;
   padding-bottom: 130px;
   background-color: var(--primary-color);
+}
+
+
+@media screen and (min-width: 991px) {
+  .featured-section{
+    padding-left: 130px;
+    padding-right: 130px;
+    padding-bottom: 130px;
+    background-color: var(--primary-color);
+  }
 }

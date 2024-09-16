@@ -1,6 +1,6 @@
 .card{
   background-color: var(--secondary-color);
-  width: 1200px;
+  /* width: 400px; */
 }
 
 input[type = text], input[type = email]{
@@ -8,5 +8,12 @@ input[type = text], input[type = email]{
 }
 
 .subs-text{
-  width: 500px;
+  width: auto;
+}
+
+@media screen and (min-width: 991px)  {
+  .card{
+    background-color: var(--secondary-color);
+    width: 1200px;
+  }
 }
